@@ -69,7 +69,7 @@
         }
       }
     </style>
-    <div class="spin-element">
+    <div id="spinner" class="spin-element">
       <div class="double-bounce1"></div>
       <div class="double-bounce2"></div>
     </div>
@@ -79,6 +79,10 @@
     class LoadingIcon02 extends Polymer.Element {
       static get is () {
         return 'loading-icon-02';
+      }
+
+      set margin (margin) {
+        this.$.spinner.style.margin = margin;
       }
     }
 
