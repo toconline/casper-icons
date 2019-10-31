@@ -49,14 +49,14 @@ class CasperIcon extends PolymerElement {
     let iconsetElement = document.head.querySelector(`casper-iconset[name="${iconset}"]`);
 
     if (!iconsetElement) {
-      console.error('The request iconset does not exist.');
+      console.error(`The requested iconset - ${iconset} - does not exist.`);
       return;
     }
 
     const template = iconsetElement.getTemplateForIcon(icon);
 
     if (!template) {
-      console.error('There is no template for the specified icon');
+      console.error(`The requested icon - ${icon} - does not exist.`);
       return;
     }
 
