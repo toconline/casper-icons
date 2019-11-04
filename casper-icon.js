@@ -16,21 +16,16 @@ class CasperIcon extends PolymerElement {
     return html`
       <style>
         :host {
-          width: 24px;
-          height: 24px;
           display: flex;
+          align-items: center;
         }
 
-        #icon-container,
-        #icon-container svg {
-          width: 100%;
-          height: 100%;
-          display: block;
+        svg {
+          width: 24px;
+          height: 24px;
           fill: var(--casper-icon-fill-color);
         }
       </style>
-
-      <div id="icon-container"></div>
     `;
   }
 
@@ -63,8 +58,11 @@ class CasperIcon extends PolymerElement {
     }
 
     const templateClass = templatize(template);
-    this.$['icon-container'].innerHTML = '';
-    this.$['icon-container'].appendChild(new templateClass().root);
+
+    const existingIcon = this.shadowRoot.querySelector('svg');
+    if (existingIcon) this.shadowRoot.removeChild(existingIcon);
+
+    this.shadowRoot.appendChild(new templateClass().root);
   }
 }
 
