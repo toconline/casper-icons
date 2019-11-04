@@ -16,13 +16,15 @@ class CasperIcon extends PolymerElement {
     return html`
       <style>
         :host {
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
         }
 
         svg {
-          width: 24px;
-          height: 24px;
+          width: 100%;
+          height: 100%;
           fill: var(--casper-icon-fill-color);
         }
       </style>
