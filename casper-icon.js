@@ -44,6 +44,8 @@ class CasperIcon extends PolymerElement {
   }
 
   async __iconChanged (iconFullName) {
+    if (!iconFullName) return;
+
     const [iconset, icon] = iconFullName.split(':');
 
     let iconsetElement = document.head.querySelector(`casper-iconset[name="${iconset}"]`);
