@@ -29,6 +29,7 @@ class CasperIconButton extends PolymerElement {
           height: 40px;
           padding: 8px;
           display: flex;
+          position: relative;
           border-radius: 50%;
           align-items: center;
           justify-items: center;
