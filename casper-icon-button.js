@@ -38,7 +38,6 @@ class CasperIconButton extends PolymerElement {
 
         :host([disabled]) {
           pointer-events: none;
-          background-color: unset !important;
         }
 
         :host([disabled]) casper-icon {
