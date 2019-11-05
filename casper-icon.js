@@ -25,6 +25,7 @@ class CasperIcon extends PolymerElement {
         svg {
           width: 100%;
           height: 100%;
+          pointer-events: none;
           fill: var(--casper-icon-fill-color);
         }
       </style>
