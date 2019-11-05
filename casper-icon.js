@@ -41,19 +41,23 @@ class CasperIcon extends PolymerElement {
   }
 
   async __iconChanged (iconFullName) {
+    // Clear the exisiting if there is any.
+    const existingIcon = this.shadowRoot.querySelector('svg');
+    if (existingIcon) {
+      this.shadowRoot.removeChild(existingIcon);
+    }
+
     if (!iconFullName) return;
 
     const [iconset, icon] = iconFullName.split(':');
 
     let iconsetElement = document.head.querySelector(`casper-iconset[name="${iconset}"]`);
-
     if (!iconsetElement) {
       console.error(`The requested iconset - ${iconset} - does not exist.`);
       return;
     }
 
     const template = iconsetElement.getTemplateForIcon(icon);
-
     if (!template) {
       console.error(`The requested icon - ${icon} - does not exist.`);
       return;
@@ -61,8 +65,7 @@ class CasperIcon extends PolymerElement {
 
     const templateClass = templatize(template);
 
-    const existingIcon = this.shadowRoot.querySelector('svg');
-    if (existingIcon) this.shadowRoot.removeChild(existingIcon);
+
 
     this.shadowRoot.appendChild(new templateClass().root);
   }
