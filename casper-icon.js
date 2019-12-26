@@ -4,7 +4,6 @@ import './casper-iconset-fa-regular.js';
 
 import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 class CasperIcon extends PolymerElement {
 
@@ -25,8 +24,8 @@ class CasperIcon extends PolymerElement {
         svg {
           width: 100%;
           height: 100%;
+          fill: currentColor;
           pointer-events: none;
-          fill: var(--casper-icon-fill-color);
         }
       </style>
     `;

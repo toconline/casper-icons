@@ -54,15 +54,15 @@ class CasperIconButton extends PolymerElement {
         :host casper-icon {
           width: 100%;
           height: 100%;
-          --casper-icon-fill-color: var(--casper-icon-button-icon-color, var(--on-primary-color));
+          color: var(--casper-icon-button-icon-color, var(--on-primary-color));
         }
 
         :host([reverse]) casper-icon {
-          --casper-icon-fill-color: var(--primary-color);
+          color: var(--primary-color);
         }
 
         :host([disabled]) casper-icon {
-          --casper-icon-fill-color: var(--disabled-text-color);
+          color: var(--disabled-text-color);
         }
 
         /* Hover styling */
@@ -76,11 +76,11 @@ class CasperIconButton extends PolymerElement {
         }
 
         :host(:hover) casper-icon {
-          --casper-icon-fill-color: var(--casper-icon-button-hover-icon-color, var(--primary-color));
+          color: var(--casper-icon-button-hover-icon-color, var(--primary-color));
         }
 
         :host([reverse]:hover) casper-icon {
-          --casper-icon-fill-color: var(--on-primary-color);
+          color: var(--on-primary-color);
         }
 
       </style>
