@@ -82,7 +82,7 @@ class CasperIconButton extends PolymerElement {
       </style>
 
       <paper-ripple></paper-ripple>
-      <casper-icon icon="[[icon]]" id="icon"></casper-icon>
+      <casper-icon icon="[[icon]]"></casper-icon>
       <slot></slot>
     `;
   }
@@ -92,9 +92,9 @@ class CasperIconButton extends PolymerElement {
 
     afterNextRender(this, () => {
       const elementStyles = getComputedStyle(this);
-      const iconDimensions = this.scrollHeight - (
-        parseInt(elementStyles.getPropertyValue('padding-top').slice(0, -2)) +
-        parseInt(elementStyles.getPropertyValue('padding-bottom').slice(0, -2))
+      const iconDimensions = parseInt(elementStyles.getPropertyValue('height')) - (
+        parseInt(elementStyles.getPropertyValue('padding-top')) +
+        parseInt(elementStyles.getPropertyValue('padding-bottom'))
       );
 
       this.hasText = this.shadowRoot
