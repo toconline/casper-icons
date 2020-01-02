@@ -24,6 +24,10 @@ class CasperIconButton extends PolymerElement {
         value: false,
         reflectToAttribute: true
       },
+      text: {
+        type: String,
+        observer: '__textChanged'
+      },
       hasText: {
         type: Boolean,
         value: false,
@@ -68,6 +72,10 @@ class CasperIconButton extends PolymerElement {
           border-radius: 50%;
         }
 
+        :host([has-text]) casper-icon {
+          margin-right: 5px;
+        }
+
         /* Hover styling */
         :host(:hover) {
           cursor: pointer;
@@ -83,7 +91,7 @@ class CasperIconButton extends PolymerElement {
 
       <paper-ripple></paper-ripple>
       <casper-icon icon="[[icon]]"></casper-icon>
-      <slot></slot>
+      [[text]]
     `;
   }
 
@@ -97,16 +105,17 @@ class CasperIconButton extends PolymerElement {
         parseInt(elementStyles.getPropertyValue('padding-bottom'))
       );
 
-      this.hasText = this.shadowRoot
-        .querySelector('slot')
-        .assignedNodes({ flatten: true })
-        .some(assignedNode => assignedNode.nodeType === Node.TEXT_NODE && !!assignedNode.textContent.trim());
-
-      this.shadowRoot.styleSheets[0].insertRule(!this.hasText
-        ? `casper-icon { width: ${iconDimensions}px; height: ${iconDimensions}px; }`
-        : `casper-icon { width: ${iconDimensions}px; height: ${iconDimensions}px; margin-right: 5px; }`
-      );
+      this.shadowRoot.styleSheets[0].insertRule(`
+        casper-icon {
+          width: ${iconDimensions}px;
+          height: ${iconDimensions}px;
+        }
+      `);
     });
+  }
+
+  __textChanged (text) {
+    this.hasText = !!text;
   }
 }
 
