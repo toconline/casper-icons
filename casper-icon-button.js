@@ -1,6 +1,7 @@
 import './casper-icon.js';
 import '@polymer/paper-ripple/paper-ripple.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 class CasperIconButton extends PolymerElement {
 
@@ -22,6 +23,11 @@ class CasperIconButton extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true
+      },
+      hasText: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
@@ -35,58 +41,72 @@ class CasperIconButton extends PolymerElement {
           padding: 8px;
           display: flex;
           position: relative;
-          border-radius: 50%;
           align-items: center;
           justify-items: center;
           box-sizing: border-box;
+          color: var(--casper-icon-button-color, var(--on-primary-color));
           background-color: var(--casper-icon-button-background-color, var(--primary-color));
         }
 
         :host([reverse]) {
+          color: var(--primary-color);
           background-color: var(--on-primary-color);
         }
 
         :host([disabled]) {
           pointer-events: none;
+          color: var(--disabled-text-color);
           background-color: var(--disabled-background-color);
         }
 
-        :host casper-icon {
-          width: 100%;
-          height: 100%;
-          color: var(--casper-icon-button-icon-color, var(--on-primary-color));
+        :host([has-text]) {
+          border-radius: 20px;
+          width: fit-content !important;
         }
 
-        :host([reverse]) casper-icon {
-          color: var(--primary-color);
-        }
-
-        :host([disabled]) casper-icon {
-          color: var(--disabled-text-color);
+        :host(:not([has-text])) {
+          border-radius: 50%;
         }
 
         /* Hover styling */
         :host(:hover) {
           cursor: pointer;
+          color: var(--casper-icon-button-hover-color, var(--primary-color));
           background-color: var(--casper-icon-button-hover-background-color, var(--on-primary-color));
         }
 
         :host([reverse]:hover) {
+          color: var(--on-primary-color);
           background-color: var(--primary-color);
         }
-
-        :host(:hover) casper-icon {
-          color: var(--casper-icon-button-hover-icon-color, var(--primary-color));
-        }
-
-        :host([reverse]:hover) casper-icon {
-          color: var(--on-primary-color);
-        }
-
       </style>
+
       <paper-ripple></paper-ripple>
-      <casper-icon icon="[[icon]]"></casper-icon>
+      <casper-icon icon="[[icon]]" id="icon"></casper-icon>
+      <slot></slot>
     `;
+  }
+
+  ready () {
+    super.ready();
+
+    afterNextRender(this, () => {
+      const elementStyles = getComputedStyle(this);
+      const iconDimensions = this.scrollHeight - (
+        parseInt(elementStyles.getPropertyValue('padding-top').slice(0, -2)) +
+        parseInt(elementStyles.getPropertyValue('padding-bottom').slice(0, -2))
+      );
+
+      this.hasText = this.shadowRoot
+        .querySelector('slot')
+        .assignedNodes({ flatten: true })
+        .some(assignedNode => assignedNode.nodeType === Node.TEXT_NODE && !!assignedNode.textContent.trim());
+
+      this.shadowRoot.styleSheets[0].insertRule(!this.hasText
+        ? `casper-icon { width: ${iconDimensions}px; height: ${iconDimensions}px; }`
+        : `casper-icon { width: ${iconDimensions}px; height: ${iconDimensions}px; margin-right: 5px; }`
+      );
+    });
   }
 }
 
