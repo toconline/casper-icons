@@ -107,8 +107,8 @@ class CasperIconButton extends PolymerElement {
 
       this.shadowRoot.styleSheets[0].insertRule(`
         casper-icon {
-          width: ${iconDimensions}px;
-          height: ${iconDimensions}px;
+          width: ${iconDimensions ? `${iconDimensions}px` : '100%'};
+          height: ${iconDimensions ? `${iconDimensions}px` : '100%'};
         }
       `);
     });
