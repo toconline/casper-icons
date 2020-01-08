@@ -15,10 +15,9 @@ class CasperIcon extends PolymerElement {
     return html`
       <style>
         :host {
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
+          width: 18px;
+          height: 18px;
+          display: inline-flex;
         }
 
         svg {
