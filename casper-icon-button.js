@@ -72,6 +72,10 @@ class CasperIconButton extends PolymerElement {
           border-radius: 50%;
         }
 
+        casper-icon {
+          display: none;
+        }
+
         :host([has-text]) casper-icon {
           margin-right: 5px;
         }
@@ -107,6 +111,7 @@ class CasperIconButton extends PolymerElement {
 
       this.shadowRoot.styleSheets[0].insertRule(`
         casper-icon {
+          display: block !important;
           width: ${iconDimensions ? `${iconDimensions}px` : '100%'};
           height: ${iconDimensions ? `${iconDimensions}px` : '100%'};
         }
