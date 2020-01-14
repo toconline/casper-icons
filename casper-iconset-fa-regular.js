@@ -1,7 +1,7 @@
 import './casper-iconset.js';
 
 const template = document.createElement('template');
-template.innerHTML =`
+template.innerHTML = `
   <casper-iconset name="fa-regular">
     <template id="angle-down">
       <svg viewBox="0 0 320 512">
