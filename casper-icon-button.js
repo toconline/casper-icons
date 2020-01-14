@@ -63,6 +63,10 @@ class CasperIconButton extends PolymerElement {
           background-color: var(--disabled-background-color);
         }
 
+        :host([hidden]) {
+          display: none;
+        }
+
         :host([has-text]) {
           border-radius: 20px;
           width: fit-content !important;
