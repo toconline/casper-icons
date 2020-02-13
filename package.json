@@ -1,7 +1,7 @@
 {
   "description": "Iconset for casper components",
   "name": "@casper2020/casper-icons",
-  "version": "1.17.1",
+  "version": "1.17.2",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
