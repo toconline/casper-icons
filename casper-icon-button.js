@@ -78,6 +78,8 @@ class CasperIconButton extends PolymerElement {
 
         casper-icon {
           display: none;
+          width: 100%;
+          height: 100%;
         }
 
         :host([has-text]) casper-icon {

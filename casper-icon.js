@@ -64,8 +64,6 @@ class CasperIcon extends PolymerElement {
 
     const templateClass = templatize(template);
 
-
-
     this.shadowRoot.appendChild(new templateClass().root);
   }
 }
