@@ -48,6 +48,7 @@ class CasperIconButton extends PolymerElement {
           align-items: center;
           justify-items: center;
           box-sizing: border-box;
+          border: 1px solid var(--primary-color);
           color: var(--casper-icon-button-color, var(--on-primary-color));
           background-color: var(--casper-icon-button-background-color, var(--primary-color));
         }
@@ -58,6 +59,7 @@ class CasperIconButton extends PolymerElement {
         }
 
         :host([disabled]) {
+          border: none;
           pointer-events: none;
           color: var(--disabled-text-color);
           background-color: var(--disabled-background-color);
