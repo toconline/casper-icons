@@ -11,24 +11,59 @@ class CasperIconButton extends PolymerElement {
 
   static get properties () {
     return {
+      /**
+       * The name of the icon.
+       *
+       * @type {String}
+       */
       icon: {
         type: String,
       },
+      /**
+       * Flag that states if the button is disabled or not.
+       *
+       * @type {Boolean}
+       */
       disabled: {
         type: Boolean,
         value: false,
         reflectToAttribute: true
       },
+      /**
+       * Flag that reversed the current style of the button.
+       *
+       * @type {Boolean}
+       */
       reverse: {
         type: Boolean,
         value: false,
         reflectToAttribute: true
       },
+      /**
+       * Text that should appear on the button.
+       *
+       * @type {String}
+       */
       text: {
         type: String,
         observer: '__textChanged'
       },
-      hasText: {
+      /**
+       * Flag that states if the button has text or is only an icon.
+       *
+       * @type {Boolean}
+       */
+      withText: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Flag that states if the button should have a border or not.
+       *
+       * @type {Boolean}
+       */
+      withBorder: {
         type: Boolean,
         value: false,
         reflectToAttribute: true
@@ -48,14 +83,17 @@ class CasperIconButton extends PolymerElement {
           align-items: center;
           justify-items: center;
           box-sizing: border-box;
-          border: 1px solid var(--primary-color);
           color: var(--casper-icon-button-color, var(--on-primary-color));
           background-color: var(--casper-icon-button-background-color, var(--primary-color));
         }
 
+        :host([with-border]) {
+          border: 1px solid var(--casper-icon-button-background-color, var(--primary-color));
+        }
+
         :host([reverse]) {
-          color: var(--primary-color);
-          background-color: var(--on-primary-color);
+          color: var(--casper-icon-button-background-color, var(--primary-color));
+          background-color: var(--casper-icon-button-color, var(--on-primary-color));
         }
 
         :host([disabled]) {
@@ -69,36 +107,35 @@ class CasperIconButton extends PolymerElement {
           display: none;
         }
 
-        :host([has-text]) {
+        :host([with-text]) {
           border-radius: 20px;
           width: fit-content !important;
         }
 
-        :host(:not([has-text])) {
+        :host(:not([with-text])) {
           border-radius: 50%;
         }
 
-        casper-icon {
-          display: none;
+        :host(:not([with-text])) casper-icon {
           width: 100%;
           height: 100%;
           line-height: 100%;
         }
 
-        :host([has-text]) casper-icon {
+        :host([with-text]) casper-icon {
           margin-right: 5px;
         }
 
         /* Hover styling */
         :host(:hover) {
           cursor: pointer;
-          color: var(--casper-icon-button-hover-color, var(--primary-color));
-          background-color: var(--casper-icon-button-hover-background-color, var(--on-primary-color));
+          color: var(--casper-icon-button-background-color, var(--primary-color));
+          background-color: var(--casper-icon-button-color, var(--on-primary-color));
         }
 
         :host([reverse]:hover) {
-          color: var(--on-primary-color);
-          background-color: var(--primary-color);
+          color: var(--casper-icon-button-color, var(--on-primary-color));
+          background-color: var(--casper-icon-button-background-color, var(--primary-color));
         }
       </style>
 
@@ -108,28 +145,13 @@ class CasperIconButton extends PolymerElement {
     `;
   }
 
-  ready () {
-    super.ready();
-
-    afterNextRender(this, () => {
-      const elementStyles = getComputedStyle(this);
-      const iconDimensions = parseInt(elementStyles.getPropertyValue('height')) - (
-        parseInt(elementStyles.getPropertyValue('padding-top')) +
-        parseInt(elementStyles.getPropertyValue('padding-bottom'))
-      );
-
-      this.shadowRoot.styleSheets[0].insertRule(`
-        casper-icon {
-          display: block !important;
-          width: ${iconDimensions ? `${iconDimensions}px` : '100%'};
-          height: ${iconDimensions ? `${iconDimensions}px` : '100%'};
-        }
-      `);
-    });
-  }
-
+  /**
+   * This method gets invoked when the button's text changes.
+   *
+   * @param {String} text The button's text.
+   */
   __textChanged (text) {
-    this.hasText = !!text;
+    this.withText = !!text;
   }
 }
 
