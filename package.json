@@ -13,12 +13,11 @@
   },
   "main": "casper-icons.js",
   "dependencies": {
-    "@polymer/polymer": "^3.x",
-    "@polymer/iron-icons": "^3.x"
+    "@polymer/polymer": "^3.x"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0",
-    "wct-browser-legacy": "^1.0.1",
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.1"
   }
 }
