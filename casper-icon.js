@@ -7,10 +7,6 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class CasperIcon extends PolymerElement {
 
-  static get is () {
-    return 'casper-icon';
-  }
-
   static get template () {
     return html`
       <style>
@@ -68,4 +64,4 @@ class CasperIcon extends PolymerElement {
   }
 }
 
-customElements.define(CasperIcon.is, CasperIcon);
+window.customElements.define('casper-icon', CasperIcon);

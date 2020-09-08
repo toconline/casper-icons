@@ -1,13 +1,8 @@
 import './casper-icon.js';
 import '@polymer/paper-ripple/paper-ripple.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 class CasperIconButton extends PolymerElement {
-
-  static get is () {
-    return 'casper-icon-button';
-  }
 
   static get properties () {
     return {
@@ -155,4 +150,4 @@ class CasperIconButton extends PolymerElement {
   }
 }
 
-customElements.define(CasperIconButton.is, CasperIconButton);
+window.customElements.define('casper-icon-button', CasperIconButton);
