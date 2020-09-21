@@ -1,6 +1,7 @@
 import './casper-icon.js';
 import '@polymer/paper-ripple/paper-ripple.js';
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
 
 class CasperIconButton extends PolymerElement {
 
@@ -80,9 +81,6 @@ class CasperIconButton extends PolymerElement {
           box-sizing: border-box;
           color: var(--casper-icon-button-color, var(--on-primary-color));
           background-color: var(--casper-icon-button-background-color, var(--primary-color));
-        }
-
-        :host([with-border]) {
           border: 1px solid var(--casper-icon-button-background-color, var(--primary-color));
         }
 
@@ -111,14 +109,13 @@ class CasperIconButton extends PolymerElement {
           border-radius: 50%;
         }
 
+        :host([with-text]) casper-icon {
+          margin-right: 5px;
+        }
+
         :host(:not([with-text])) casper-icon {
           width: 100%;
           height: 100%;
-          line-height: 100%;
-        }
-
-        :host([with-text]) casper-icon {
-          margin-right: 5px;
         }
 
         /* Hover styling */
@@ -135,7 +132,7 @@ class CasperIconButton extends PolymerElement {
       </style>
 
       <paper-ripple></paper-ripple>
-      <casper-icon icon="[[icon]]"></casper-icon>
+      <casper-icon icon="[[icon]]" id="icon"></casper-icon>
       [[text]]
     `;
   }
@@ -147,6 +144,18 @@ class CasperIconButton extends PolymerElement {
    */
   __textChanged (text) {
     this.withText = !!text;
+
+    if (this.withText) {
+      afterNextRender(this, () => {
+        const elementComputedStyle = window.getComputedStyle(this);
+
+        const iconDimensions = this.clientHeight - parseInt(elementComputedStyle.paddingBottom) - parseInt(elementComputedStyle.paddingTop);
+        this.$.icon.style.width = `${iconDimensions}px`;
+        this.$.icon.style.height = `${iconDimensions}px`;
+      });
+    } else {
+      this.$.icon.removeAttribute('style');
+    }
   }
 }
 
