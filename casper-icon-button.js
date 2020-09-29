@@ -26,6 +26,16 @@ class CasperIconButton extends PolymerElement {
         reflectToAttribute: true
       },
       /**
+       * Flag that states if the button should not set its width automatically to fit the content when there's text.
+       *
+       * @type {Boolean}
+       */
+      disableTextAutoWidth: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
        * Flag that reversed the current style of the button.
        *
        * @type {Boolean}
@@ -102,6 +112,9 @@ class CasperIconButton extends PolymerElement {
 
         :host([with-text]) {
           border-radius: 20px;
+        }
+
+        :host([with-text]:not([disable-text-auto-width])) {
           width: fit-content !important;
         }
 
