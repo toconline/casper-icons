@@ -108,7 +108,7 @@ class CasperIconButton extends PolymerElement {
         }
 
         :host([hidden]) {
-          display: none;
+          display: none !important;
         }
 
         :host([with-text]) {
