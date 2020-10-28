@@ -16,6 +16,10 @@ class CasperIcon extends PolymerElement {
           display: inline-flex;
         }
 
+        :host([hidden]) {
+          display: none;
+        }
+
         svg {
           width: 100%;
           height: 100%;
@@ -28,6 +32,21 @@ class CasperIcon extends PolymerElement {
 
   static get properties () {
     return {
+      /**
+       * Flag that states if the component should be hidden or not.
+       *
+       * @type {Boolean}
+       */
+      hidden: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * The icon's name.
+       *
+       * @type {String}
+       */
       icon: {
         type: String,
         observer: '__iconChanged'
