@@ -17,7 +17,7 @@ class CasperIcon extends PolymerElement {
         }
 
         :host([hidden]) {
-          display: none;
+          display: none !important;
         }
 
         svg {
