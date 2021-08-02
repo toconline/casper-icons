@@ -68,6 +68,12 @@ export class CasperIcon extends LitElement {
    */
   static _registry = new Map();
 
+  /**
+   * Register an SVG lit template 
+   * 
+   * @param {String} name   full name of the icon attribute
+   * @param {Object} svgTag SVG literal template tagged with lit's svg
+   */
   static register (name, svgTag) {
     CasperIcon._registry.set(name, svgTag);
   }
@@ -90,7 +96,7 @@ export class CasperIcon extends LitElement {
   }
 
   render () {
-    console.log('render called');
+    //console.log('render called');
     return this._icon;
   }
 
@@ -120,7 +126,7 @@ export class CasperIcon extends LitElement {
         this._icon = unsafeSVG(await lazySvg.text());
         CasperIcon.register(this.icon, this._icon);
       } else {
-        // ... bummer, someone is screwing up the file does exists where it should ...
+        // ... bummer, someone is screwing up here, the file does not exist where it should ...
         this._icon = undefined;
         console.warn(`CasperIcon: unable to load icon named '${this.icon}'`);
       }
