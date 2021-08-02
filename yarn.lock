@@ -2,14 +2,63 @@
 # yarn lockfile v1
 
 
-"@polymer/polymer@^3.x":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.3.1.tgz#9ad48992d2a96775f80b0673f3a615d6df8a3dfc"
-  integrity sha512-8KaB48tzyMjdsHdxo5KvCAaqmTe7rYDzQAoj/pyEfq9Fp4YfUaS+/xqwYj0GbiDAUNzwkmEQ7dw9cgnRNdKO8A==
+"@lit/reactive-element@^1.0.0-rc.2":
+  version "1.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.0.0-rc.2.tgz#f24dba16ea571a08dca70f1783bd2ca5ec8de3ee"
+  integrity sha512-cujeIl5Ei8FC7UHf4/4Q3bRJOtdTe1vpJV/JEBYCggedmQ+2P8A2oz7eE+Vxi6OJ4nc0X+KZxXnBoH4QrEbmEQ==
+
+"@polymer/iron-a11y-keys-behavior@^3.0.0-pre.26":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@polymer/iron-a11y-keys-behavior/-/iron-a11y-keys-behavior-3.0.1.tgz#2868ea72912d2007ffab4734684a91f5aac49b84"
+  integrity sha512-lnrjKq3ysbBPT/74l0Fj0U9H9C35Tpw2C/tpJ8a+5g8Y3YJs1WSZYnEl1yOkw6sEyaxOq/1DkzH0+60gGu5/PQ==
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/paper-ripple@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-ripple/-/paper-ripple-3.0.2.tgz#52566f5ee367942022ceaa991368105d21403de5"
+  integrity sha512-DnLNvYIMsiayeICroYxx6Q6Hg1cUU8HN2sbutXazlemAlGqdq80qz3TIaVdbpbt/pvjcFGX2HtntMlPstCge8Q==
+  dependencies:
+    "@polymer/iron-a11y-keys-behavior" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/polymer@^3.0.0":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.4.1.tgz#333bef25711f8411bb5624fb3eba8212ef8bee96"
+  integrity sha512-KPWnhDZibtqKrUz7enIPOiO4ZQoJNOuLwqrhV2MXzIt3VVnUVJVG5ORz4Z2sgO+UZ+/UZnPD0jqY+jmw/+a9mQ==
   dependencies:
     "@webcomponents/shadycss" "^1.9.1"
+
+"@types/trusted-types@^1.0.1":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-1.0.6.tgz#569b8a08121d3203398290d602d84d73c8dcf5da"
+  integrity sha512-230RC8sFeHoT6sSUlRO6a8cAnclO06eeiq1QDfiv2FGCLWFvvERWgwIQD4FWqD9A69BN7Lzee4OXwoMVnnsWDw==
 
 "@webcomponents/shadycss@^1.9.1":
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.9.3.tgz#74ee4be13f5374724aecb3d2c2de77523e01ada9"
   integrity sha512-fRuET+UGrH84hG0UF4iHbFqWZKUoan4/ki+iCOJ/vnKltPSHv/ZVbcA6sT/pRreznt8aKEGqN2KdHvgRxn4xjA==
+
+lit-element@^3.0.0-rc.2:
+  version "3.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-3.0.0-rc.2.tgz#883d0b6fd7b846226d360699d1b713da5fc7e1b7"
+  integrity sha512-2Z7DabJ3b5K+p5073vFjMODoaWqy5PIaI4y6ADKm+fCGc8OnX9fU9dMoUEBZjFpd/bEFR9PBp050tUtBnT9XTQ==
+  dependencies:
+    "@lit/reactive-element" "^1.0.0-rc.2"
+    lit-html "^2.0.0-rc.3"
+
+lit-html@^2.0.0-rc.3:
+  version "2.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.0.0-rc.3.tgz#1c216e548630e18d3093d97f4e29563abce659af"
+  integrity sha512-Y6P8LlAyQuqvzq6l/Nc4z5/P5M/rVLYKQIRxcNwSuGajK0g4kbcBFQqZmgvqKG+ak+dHZjfm2HUw9TF5N/pkCw==
+  dependencies:
+    "@types/trusted-types" "^1.0.1"
+
+lit@^2.0.0-rc.2:
+  version "2.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/lit/-/lit-2.0.0-rc.2.tgz#724a2d621aa098001d73bf7106f3a72b7b5948ef"
+  integrity sha512-BOCuoJR04WaTV8UqTKk09cNcQA10Aq2LCcBOiHuF7TzWH5RNDsbCBP5QM9sLBSotGTXbDug/gFO08jq6TbyEtw==
+  dependencies:
+    "@lit/reactive-element" "^1.0.0-rc.2"
+    lit-element "^3.0.0-rc.2"
+    lit-html "^2.0.0-rc.3"
