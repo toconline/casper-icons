@@ -120,15 +120,17 @@ export class CasperIcon extends LitElement {
         console.warn(`CasperIcon: loading of predefined set '${iconSet}' failed for icon named '${iconName}'!!!`);
       }
     } else {
-      // ... the icon does not belong to a set, so it will be loaded from a SVG file ...
-      const lazySvg = await fetch(`${this.icon[0] === '/' ? this.icon : `/static/icons/${this.icon}`}.svg`);
-      if ( lazySvg.ok ) {
-        this._icon = unsafeSVG(await lazySvg.text());
-        CasperIcon.register(this.icon, this._icon);
-      } else {
-        // ... bummer, someone is screwing up here, the file does not exist where it should ...
-        this._icon = undefined;
-        console.warn(`CasperIcon: unable to load icon named '${this.icon}'`);
+      if ( !! this.icon ) {
+        // ... the icon does not belong to a set, so it will be loaded from a SVG file ...
+        const lazySvg = await fetch(`${this.icon[0] === '/' ? this.icon : `/static/icons/${this.icon}`}.svg`);
+        if ( lazySvg.ok ) {
+          this._icon = unsafeSVG(await lazySvg.text());
+          CasperIcon.register(this.icon, this._icon);
+        } else {
+          // ... bummer, someone is screwing up here, the file does not exist where it should ...
+          this._icon = undefined;
+          console.warn(`CasperIcon: unable to load icon named '${this.icon}'`);
+        }
       }
     }
     this.requestUpdate();
