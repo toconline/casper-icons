@@ -19,7 +19,7 @@
  */
 
 import { svg }        from 'lit';
-import { CasperIcon } from './casper-icon.js';
+import { CasperIcon } from './casper-icon-class.js';
 
 CasperIcon.register('fa-regular:angle-down', svg`
       <svg viewBox="0 0 320 512">

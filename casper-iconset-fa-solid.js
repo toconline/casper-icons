@@ -19,7 +19,7 @@
  */
 
 import { svg }        from 'lit';
-import { CasperIcon } from './casper-icon.js';
+import { CasperIcon } from './casper-icon-class.js';
 
 CasperIcon.register('fa-solid:bell', svg`
       <svg viewBox="0 0 448 512">
