@@ -188,6 +188,7 @@ class CasperIconButton extends LitElement {
     if ( changedProperties.has('text') ) {
       console.log("**** ", this.text);
       this.withText = !! this.text;
+      this.style.width = 'auto';
     }
   }
 
