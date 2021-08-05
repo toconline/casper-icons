@@ -7,7 +7,7 @@
   },
   "main": "casper-icons.js",
   "dependencies": {
-    "@polymer/paper-ripple": "^3.0.2",
+    "ink-ripple": "alex-saunders/ink-ripple",
     "lit": "^2.0.0-rc.2"
   }
 }

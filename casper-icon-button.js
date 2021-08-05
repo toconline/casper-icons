@@ -20,7 +20,7 @@
 
 import { LitElement, css, html } from 'lit';
 import './casper-icon.js';
-import '@polymer/paper-ripple/paper-ripple.js';
+import 'ink-ripple/ink-ripple.js';
 
 class CasperIconButton extends LitElement {
 
@@ -36,11 +36,15 @@ class CasperIconButton extends LitElement {
       justify-items: center;
       box-sizing: border-box;
       color: var(--casper-icon-button-color, var(--on-primary-color));
-      background-color: var(--casper-icon-button-background-color, var(--primary-color));
-      border: 1px solid var(--casper-icon-button-background-color, var(--primary-color));
+      background-color: var(--casper-icon-button-background-color, var(--primary-color, red));
+      border: 1px solid var(--casper-icon-button-background-color, var(--primary-color, red));
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    ink-ripple {
+      --ink-ripple-accent-color: var(--dark-primary-color);
     }
 
     casper-icon {
@@ -48,8 +52,8 @@ class CasperIconButton extends LitElement {
     }
 
     :host([reverse]) {
-      color: var(--casper-icon-button-background-color, var(--primary-color));
-      background-color: var(--casper-icon-button-color, var(--on-primary-color));
+      color: var(--casper-icon-button-background-color, var(--primary-color, red));
+      background-color: var(--casper-icon-button-color, var(--on-primary-color, pink));
     }
 
     :host([disabled]) {
@@ -65,15 +69,16 @@ class CasperIconButton extends LitElement {
 
     :host([with-text]) {
       border-radius: 20px;
+      width: auto;
     }
 
     :host([with-text][disable-text-auto-width]) {
-      /*display: flex;*/
+      justify-content: center;
     }
 
-    :host([with-text]:not([disable-text-auto-width])) {
+    /*:host([with-text]:not([disable-text-auto-width])) {
       width: auto;
-    }
+    }*/
 
     :host(:not([with-text])) {
       border-radius: 50%;
@@ -136,7 +141,6 @@ class CasperIconButton extends LitElement {
        */
       reverse: {
         type: Boolean,
-        //value: false,
         reflect: true
       },
       /**
@@ -147,7 +151,6 @@ class CasperIconButton extends LitElement {
       text: {
         type: String,
         reflect: true
-        //observer: '__textChanged' // TODO
       },
       /**
        * Flag that states if the button has text or is only an icon.
@@ -189,33 +192,22 @@ class CasperIconButton extends LitElement {
   }
 
   render () {
+    console.log("render");
     return html`
-      <paper-ripple></paper-ripple>
+      <ink-ripple></ink-ripple>
       <casper-icon icon=${this.icon} id="icon"></casper-icon>
       ${this.text}
     `;
   }
 
-  /**
-   * This method gets invoked when the button's text changes.
-   *
-   * @param {String} text The button's text.
-   */
-  __textChanged (text) {
-    this.withText = !!text;
-
-    if (this.withText) {
-      afterNextRender(this, () => {
-        const elementComputedStyle = window.getComputedStyle(this);
-
-        const iconDimensions = this.clientHeight - parseInt(elementComputedStyle.paddingBottom) - parseInt(elementComputedStyle.paddingTop);
-        this.$.icon.style.width = `${iconDimensions}px`;
-        this.$.icon.style.height = `${iconDimensions}px`;
-      });
-    } else {
-      this.$.icon.removeAttribute('style');
+  firstUpdated () {
+    if ( this.disableTextAutoWidth ) {
+      const elementComputedStyle = window.getComputedStyle(this);
+      this.style.width  = elementComputedStyle['width'];
+      this.style.height = elementComputedStyle['height'];  
     }
   }
+
 }
 
 window.customElements.define('casper-icon-button', CasperIconButton);
