@@ -186,14 +186,12 @@ class CasperIconButton extends LitElement {
 
   willUpdate (changedProperties) {
     if ( changedProperties.has('text') ) {
-      console.log("**** ", this.text);
       this.withText = !! this.text;
       this.style.width = 'auto';
     }
   }
 
   render () {
-    console.log("render");
     return html`
       <ink-ripple></ink-ripple>
       <casper-icon icon=${this.icon} id="icon"></casper-icon>

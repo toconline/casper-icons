@@ -18,9 +18,6 @@
   -
  */
 
-//import { CasperIcon } from './casper-icon-class.js';
 import './casper-iconset-fa-light.js';
 import './casper-iconset-fa-solid.js';
 import './casper-iconset-fa-regular.js';
-
-//export class { CasperIcon };

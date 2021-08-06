@@ -87,16 +87,17 @@ export class CasperIcon extends LitElement {
         // ... we already have the icon in stock, let the update proceed ...
         return true; 
       } else {
-        // ... not found, trigger the async load process the stop this render ...
-        this._lazyLoadIcon();
-        return false;
+        if ( !! this.icon && this.icon.length ) {
+          // ... not found, trigger the async load process the stop this render ...
+          this._lazyLoadIcon();
+          return false;
+        }
       }
     }
     return true;
   }
 
   render () {
-    //console.log('render called');
     return this._icon;
   }
 
