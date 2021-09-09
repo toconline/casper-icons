@@ -1,7 +1,7 @@
 {
   "description": "Iconset for casper components",
   "name": "@cloudware-casper/casper-icons",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
