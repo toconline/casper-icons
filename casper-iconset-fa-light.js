@@ -18,8 +18,8 @@
   -
  */
 
-import { svg }           from 'lit';
-import { CasperIcon } from './casper-icon-class.js';
+import { svg }        from 'lit';
+import { CasperIcon } from './casper-icon.js';
 
 CasperIcon.register('fa-light:alarm-clock', svg`
       <svg viewBox="0 0 512 512">
