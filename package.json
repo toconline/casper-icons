@@ -1,13 +1,13 @@
 {
   "description": "Iconset for casper components",
   "name": "@cloudware-casper/casper-icons",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "main": "casper-icons.js",
   "dependencies": {
     "ink-ripple": "alex-saunders/ink-ripple",
-    "lit": "^2.0.0-rc.2"
+    "lit": "^2.x"
   }
 }
