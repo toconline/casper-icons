@@ -18,71 +18,65 @@
   -
  */
 
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { LitElement, html, css } from 'lit';
 
-class LoadingIcon04 extends PolymerElement {
-  static get template() {
+class LoadingIcon04 extends LitElement {
+    
+  static styles = css`
+    :host {
+      --size-element: 8px;
+    }
+
+    .spinner {
+      width: var(--size-element);
+      text-align: center;
+    }
+
+    .spinner > div {
+      width: var(--size-element);
+      height: var(--size-element);
+      background-color: var(--primary-color);
+
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    }
+
+    .spinner .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .spinner .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+
+    @-webkit-keyframes sk-bouncedelay {
+      0%, 80%, 100% { -webkit-transform: scale(0) }
+      40% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes sk-bouncedelay {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      } 40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+      }
+    }`;
+
+  render () {
     return html`
-      <style>
-
-        :host {
-          --size-element: 8px;
-        }
-
-        .spinner {
-          width: var(--size-element);
-          text-align: center;
-        }
-
-        .spinner > div {
-          width: var(--size-element);
-          height: var(--size-element);
-          background-color: var(--primary-color);
-
-          border-radius: 100%;
-          display: inline-block;
-          -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-          animation: sk-bouncedelay 1.4s infinite ease-in-out both;
-        }
-
-        .spinner .bounce1 {
-          -webkit-animation-delay: -0.32s;
-          animation-delay: -0.32s;
-        }
-
-        .spinner .bounce2 {
-          -webkit-animation-delay: -0.16s;
-          animation-delay: -0.16s;
-        }
-
-        @-webkit-keyframes sk-bouncedelay {
-          0%, 80%, 100% { -webkit-transform: scale(0) }
-          40% { -webkit-transform: scale(1.0) }
-        }
-
-        @keyframes sk-bouncedelay {
-          0%, 80%, 100% {
-            -webkit-transform: scale(0);
-            transform: scale(0);
-          } 40% {
-            -webkit-transform: scale(1.0);
-            transform: scale(1.0);
-          }
-        }
-
-      </style>
-
       <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
         <div class="bounce3"></div>
-      </div>
-  `;
-  }
-
-  static get is () {
-    return 'loading-icon-04';
+      </div>`;
   }
 }
 
-window.customElements.define(LoadingIcon04.is, LoadingIcon04);
+
+window.customElements.define( 'loading-icon-04', LoadingIcon04);

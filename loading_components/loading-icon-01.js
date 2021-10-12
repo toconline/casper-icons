@@ -18,83 +18,79 @@
   -
  */
 
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { LitElement, html, css } from 'lit';
 
-class LoadingIcon01 extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LoadingIcon01 extends LitElement {
 
-        :host{
-          display: block;
-        }
+  static styles = css`
+    :host{
+      display: block;
+    }
 
-        .spin-element {
-          margin: 75px auto;
-          width: 50px;
-          height: 50px;
-          text-align: center;
-          font-size: 10px;
-        }
+    .spin-element {
+      margin: 75px auto;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 10px;
+    }
 
-        .spin-element > div {
-          background-color: #D8D8D8;
-          height: 100%;
-          width: 6px;
-          display: inline-block;
+    .spin-element > div {
+      background-color: #D8D8D8;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
 
-          -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
-          animation: sk-stretchdelay 1.2s infinite ease-in-out;
-        }
+      -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
 
-        .spin-element .rect2 {
-          -webkit-animation-delay: -1.1s;
-          animation-delay: -1.1s;
-        }
 
-        .spin-element .rect3 {
-          -webkit-animation-delay: -1.0s;
-          animation-delay: -1.0s;
-        }
+    .spin-element .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
 
-        .spin-element .rect4 {
-          -webkit-animation-delay: -0.9s;
-          animation-delay: -0.9s;
-        }
+    .spin-element .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
 
-        .spin-element .rect5 {
-          -webkit-animation-delay: -0.8s;
-          animation-delay: -0.8s;
-        }
+    .spin-element .rect4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
 
-        @-webkit-keyframes sk-stretchdelay {
-          0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
-          20% { -webkit-transform: scaleY(1.0) }
-        }
+    .spin-element .rect5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
 
-        @keyframes sk-stretchdelay {
-          0%, 40%, 100% {
-            transform: scaleY(0.4);
-            -webkit-transform: scaleY(0.4);
-          }  20% {
-            transform: scaleY(1.0);
-            -webkit-transform: scaleY(1.0);
-          }
-        }
-      </style>
-      <div class="spin-element">
-        <div class="rect1"></div>
-        <div class="rect2"></div>
-        <div class="rect3"></div>
-        <div class="rect4"></div>
-        <div class="rect5"></div>
-      </div>
-    `;
-  }
+    @-webkit-keyframes sk-stretchdelay {
+      0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+      20% { -webkit-transform: scaleY(1.0) }
+    }
 
-  static get is () {
-    return 'loading-icon-01';
+    @keyframes sk-stretchdelay {
+      0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+      }  20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+      }
+    }`;
+
+    render () {
+      return  html`
+        <div class="spin-element">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>`;
   }
 }
 
-window.customElements.define(LoadingIcon01.is, LoadingIcon01);
+window.customElements.define('loading-icon-01', LoadingIcon01);
