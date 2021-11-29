@@ -97,12 +97,12 @@ class CasperIconButton extends LitElement {
     :host(:hover) {
       cursor: pointer;
       color: var(--casper-icon-button-background-color, var(--primary-color));
-      background-color: var(--casper-icon-button-color, var(--on-primary-color));
+      background-color: var(--light-primary-color, var(--casper-icon-button-color));
     }
 
     :host([reverse]:hover) {
-      color: var(--casper-icon-button-color, var(--on-primary-color));
-      background-color: var(--casper-icon-button-background-color, var(--primary-color));
+      color: var(--primary-color, var(--casper-icon-button-color));
+      background-color: var(--light-primary-color, var(--casper-icon-button-background-color));
     }`;
 
   static get properties () {
@@ -203,7 +203,7 @@ class CasperIconButton extends LitElement {
     if ( this.disableTextAutoWidth ) {
       const elementComputedStyle = window.getComputedStyle(this);
       this.style.width  = elementComputedStyle['width'];
-      this.style.height = elementComputedStyle['height'];  
+      this.style.height = elementComputedStyle['height'];
     }
   }
 
