@@ -191,11 +191,17 @@ class CasperIconButton extends LitElement {
     }
   }
 
+
+  formatDisplayText (text) {
+    const rawText = text || '';
+    return rawText.replace(/<[^>]*>?/gm, '');
+  }
+
   render () {
     return html`
       <ink-ripple></ink-ripple>
       <casper-icon icon=${this.icon} id="icon"></casper-icon>
-      ${this.text}
+      ${this.formatDisplayText(this.text)}
     `;
   }
 
